@@ -375,13 +375,14 @@ function FinalCTA() {
         <p className="text-lg text-foreground/60 max-w-xl mx-auto mb-10">
           Join 240,000+ members banking on the new rail.
         </p>
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-          className="px-10 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
-        >
-          Open my account <ArrowRight className="size-5" />
-        </motion.button>
+        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
+          <Link
+            to="/open-account"
+            className="px-10 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
+          >
+            Open my account <ArrowRight className="size-5" />
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );
