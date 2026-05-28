@@ -81,9 +81,9 @@ function Nav() {
             <a key={l} href="#" className="hover:text-brand-primary transition-colors">{l}</a>
           ))}
         </div>
-        <button className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
+        <Link to="/open-account" className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
           Open Account
-        </button>
+        </Link>
       </motion.div>
     </nav>
   );
