@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
   ArrowRight,
@@ -81,9 +81,9 @@ function Nav() {
             <a key={l} href="#" className="hover:text-brand-primary transition-colors">{l}</a>
           ))}
         </div>
-        <button className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
+        <Link to="/open-account" className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
           Open Account
-        </button>
+        </Link>
       </motion.div>
     </nav>
   );
@@ -126,13 +126,14 @@ function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="flex flex-wrap gap-4"
           >
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="px-8 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
-            >
-              Start Application <ArrowRight className="size-5" />
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <Link
+                to="/open-account"
+                className="px-8 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
+              >
+                Start Application <ArrowRight className="size-5" />
+              </Link>
+            </motion.div>
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
@@ -374,13 +375,14 @@ function FinalCTA() {
         <p className="text-lg text-foreground/60 max-w-xl mx-auto mb-10">
           Join 240,000+ members banking on the new rail.
         </p>
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-          className="px-10 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
-        >
-          Open my account <ArrowRight className="size-5" />
-        </motion.button>
+        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
+          <Link
+            to="/open-account"
+            className="px-10 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
+          >
+            Open my account <ArrowRight className="size-5" />
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );
