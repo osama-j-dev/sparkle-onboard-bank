@@ -126,13 +126,14 @@ function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="flex flex-wrap gap-4"
           >
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="px-8 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
-            >
-              Start Application <ArrowRight className="size-5" />
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <Link
+                to="/open-account"
+                className="px-8 py-4 rounded-2xl bg-brand-primary text-primary-foreground font-bold text-lg cursor-pointer shadow-glow-primary inline-flex items-center gap-2"
+              >
+                Start Application <ArrowRight className="size-5" />
+              </Link>
+            </motion.div>
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
