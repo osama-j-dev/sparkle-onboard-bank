@@ -488,14 +488,14 @@ function Step3({ data, errors, update }: StepProps) {
           placeholder="Software Engineer" maxLength={80}
         />
       </Field>
-      <Field label="Annual income (USD)" error={errors.income}>
+      <Field label="Annual income (PKR)" error={errors.income}>
         <SelectInput
           value={data.income} onChange={(v) => update("income", v)} placeholder="Select range"
           options={[
-            { value: "<50k", label: "Less than $50,000" },
-            { value: "50k-150k", label: "$50,000 – $150,000" },
-            { value: "150k-500k", label: "$150,000 – $500,000" },
-            { value: "500k+", label: "Over $500,000" },
+            { value: "<50k", label: "Less than ₨ 1,500,000" },
+            { value: "50k-150k", label: "₨ 1,500,000 – ₨ 4,500,000" },
+            { value: "150k-500k", label: "₨ 4,500,000 – ₨ 15,000,000" },
+            { value: "500k+", label: "Over ₨ 15,000,000" },
           ]}
         />
       </Field>
