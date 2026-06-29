@@ -518,8 +518,8 @@ function Step3({ data, errors, update }: StepProps) {
 
 const tiers = [
   { id: "essential", name: "Essential", price: "Free", perks: ["Multi-currency wallet", "Virtual card"] },
-  { id: "pro", name: "Pro", price: "$12/mo", perks: ["Physical metal card", "Zero FX fees"] },
-  { id: "elite", name: "Elite", price: "$49/mo", perks: ["Concierge", "Priority pass", "Wealth desk"] },
+  { id: "pro", name: "Pro", price: "₨ 3,500/mo", perks: ["Physical metal card", "Zero FX fees"] },
+  { id: "elite", name: "Elite", price: "₨ 14,000/mo", perks: ["Concierge", "Priority pass", "Wealth desk"] },
 ];
 
 function Step4({ data, errors, update }: StepProps) {
