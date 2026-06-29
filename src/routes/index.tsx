@@ -74,7 +74,7 @@ function Nav() {
       >
         <div className="flex items-center gap-2">
           <div className="size-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary shadow-glow-primary" />
-          <span className="font-display font-extrabold text-xl tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
           {["Personal", "Business", "Treasury", "Wealth"].map((l) => (
