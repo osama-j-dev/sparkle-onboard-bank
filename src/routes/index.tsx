@@ -176,7 +176,7 @@ function HeroCard() {
           <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-white/10">
             <img
               src={heroCard}
-              alt="Aurelius glass card preview"
+              alt="Bankislami glass card preview"
               width={1024}
               height={640}
               className="w-full h-full object-cover"
