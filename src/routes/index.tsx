@@ -189,7 +189,7 @@ function HeroCard() {
               tint="bg-brand-secondary/20 text-brand-secondary"
               title="Cloud Compute Inc."
               sub="Subscription"
-              amount="-$299.00"
+              amount="-₨ 83,720"
               amountClass="text-brand-danger"
             />
             <Tx
