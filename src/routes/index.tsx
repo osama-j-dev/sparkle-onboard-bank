@@ -166,7 +166,7 @@ function HeroCard() {
               <p className="text-foreground/40 text-xs uppercase tracking-widest mb-1">
                 Available Balance
               </p>
-              <h3 className="text-4xl font-display font-bold">$124,800.50</h3>
+              <h3 className="text-4xl font-display font-bold">₨ 34,944,140</h3>
             </div>
             <div className="size-12 rounded-full border border-white/20 flex items-center justify-center">
               <CreditCard className="size-5 text-brand-primary" />
