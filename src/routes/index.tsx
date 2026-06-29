@@ -19,13 +19,13 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Aurelius — Open a premium global account in 3 minutes" },
+      { title: "Bankislami — Open a premium account in 3 minutes" },
       {
         name: "description",
         content:
-          "Aurelius is next-generation banking. Open a premium global account in 3 minutes — no borders, no hidden fees, pure digital movement.",
+          "Bankislami is next-generation banking. Open a premium account in 3 minutes — no borders, no hidden fees, pure digital movement.",
       },
-      { property: "og:title", content: "Aurelius — Banking for the unbounded" },
+      { property: "og:title", content: "Bankislami — Banking for the unbounded" },
       {
         property: "og:description",
         content: "Open a premium global account in 3 minutes.",
@@ -74,7 +74,7 @@ function Nav() {
       >
         <div className="flex items-center gap-2">
           <div className="size-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary shadow-glow-primary" />
-          <span className="font-display font-extrabold text-xl tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
           {["Personal", "Business", "Treasury", "Wealth"].map((l) => (
@@ -166,7 +166,7 @@ function HeroCard() {
               <p className="text-foreground/40 text-xs uppercase tracking-widest mb-1">
                 Available Balance
               </p>
-              <h3 className="text-4xl font-display font-bold">$124,800.50</h3>
+              <h3 className="text-4xl font-display font-bold">₨ 34,944,140</h3>
             </div>
             <div className="size-12 rounded-full border border-white/20 flex items-center justify-center">
               <CreditCard className="size-5 text-brand-primary" />
@@ -176,7 +176,7 @@ function HeroCard() {
           <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-white/10">
             <img
               src={heroCard}
-              alt="Aurelius glass card preview"
+              alt="Bankislami glass card preview"
               width={1024}
               height={640}
               className="w-full h-full object-cover"
@@ -189,7 +189,7 @@ function HeroCard() {
               tint="bg-brand-secondary/20 text-brand-secondary"
               title="Cloud Compute Inc."
               sub="Subscription"
-              amount="-$299.00"
+              amount="-₨ 83,720"
               amountClass="text-brand-danger"
             />
             <Tx
@@ -197,7 +197,7 @@ function HeroCard() {
               tint="bg-brand-primary/20 text-brand-primary"
               title="Global Equity Div"
               sub="Dividend"
-              amount="+$1,420.00"
+              amount="+₨ 397,600"
               amountClass="text-brand-primary"
             />
           </div>
@@ -394,10 +394,10 @@ function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <div className="size-6 rounded-md bg-gradient-to-br from-brand-primary to-brand-secondary" />
-          <span className="font-display font-extrabold tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold tracking-tight">BANKISLAMI</span>
         </div>
         <p className="text-xs text-foreground/40">
-          © 2026 Aurelius Financial. Banking services via Aurelius Trust Partners.
+          © 2026 Bankislami Financial. Banking services via Bankislami Trust Partners.
         </p>
         <div className="flex gap-6 text-xs text-foreground/50">
           <a href="#" className="hover:text-brand-primary">Privacy</a>

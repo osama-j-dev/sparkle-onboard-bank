@@ -20,11 +20,11 @@ export const Route = createFileRoute("/open-account")({
   component: OpenAccount,
   head: () => ({
     meta: [
-      { title: "Open Account — Aurelius" },
+      { title: "Open Account — Bankislami" },
       {
         name: "description",
         content:
-          "Open your Aurelius account in minutes. Secure, guided, and built for global movement.",
+          "Open your Bankislami account in minutes. Secure, guided, and built for global movement.",
       },
     ],
   }),
@@ -156,7 +156,7 @@ function OpenAccount() {
       <nav className="px-6 py-6 max-w-6xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="size-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary shadow-glow-primary" />
-          <span className="font-display font-extrabold text-xl tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </Link>
         <Link
           to="/"
@@ -488,14 +488,14 @@ function Step3({ data, errors, update }: StepProps) {
           placeholder="Software Engineer" maxLength={80}
         />
       </Field>
-      <Field label="Annual income (USD)" error={errors.income}>
+      <Field label="Annual income (PKR)" error={errors.income}>
         <SelectInput
           value={data.income} onChange={(v) => update("income", v)} placeholder="Select range"
           options={[
-            { value: "<50k", label: "Less than $50,000" },
-            { value: "50k-150k", label: "$50,000 – $150,000" },
-            { value: "150k-500k", label: "$150,000 – $500,000" },
-            { value: "500k+", label: "Over $500,000" },
+            { value: "<50k", label: "Less than ₨ 1,500,000" },
+            { value: "50k-150k", label: "₨ 1,500,000 – ₨ 4,500,000" },
+            { value: "150k-500k", label: "₨ 4,500,000 – ₨ 15,000,000" },
+            { value: "500k+", label: "Over ₨ 15,000,000" },
           ]}
         />
       </Field>
@@ -518,8 +518,8 @@ function Step3({ data, errors, update }: StepProps) {
 
 const tiers = [
   { id: "essential", name: "Essential", price: "Free", perks: ["Multi-currency wallet", "Virtual card"] },
-  { id: "pro", name: "Pro", price: "$12/mo", perks: ["Physical metal card", "Zero FX fees"] },
-  { id: "elite", name: "Elite", price: "$49/mo", perks: ["Concierge", "Priority pass", "Wealth desk"] },
+  { id: "pro", name: "Pro", price: "₨ 3,500/mo", perks: ["Physical metal card", "Zero FX fees"] },
+  { id: "elite", name: "Elite", price: "₨ 14,000/mo", perks: ["Concierge", "Priority pass", "Wealth desk"] },
 ];
 
 function Step4({ data, errors, update }: StepProps) {
@@ -570,10 +570,10 @@ function Step4({ data, errors, update }: StepProps) {
         <SelectInput
           value={data.currency} onChange={(v) => update("currency", v)} placeholder="Select currency"
           options={[
+            { value: "PKR", label: "PKR — Pakistani Rupee" },
             { value: "USD", label: "USD — US Dollar" },
             { value: "EUR", label: "EUR — Euro" },
             { value: "GBP", label: "GBP — British Pound" },
-            { value: "PKR", label: "PKR — Pakistani Rupee" },
           ]}
         />
       </Field>
