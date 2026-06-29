@@ -394,10 +394,10 @@ function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <div className="size-6 rounded-md bg-gradient-to-br from-brand-primary to-brand-secondary" />
-          <span className="font-display font-extrabold tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold tracking-tight">BANKISLAMI</span>
         </div>
         <p className="text-xs text-foreground/40">
-          © 2026 Aurelius Financial. Banking services via Aurelius Trust Partners.
+          © 2026 Bankislami Financial. Banking services via Bankislami Trust Partners.
         </p>
         <div className="flex gap-6 text-xs text-foreground/50">
           <a href="#" className="hover:text-brand-primary">Privacy</a>
