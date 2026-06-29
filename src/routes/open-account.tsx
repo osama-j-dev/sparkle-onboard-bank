@@ -20,11 +20,11 @@ export const Route = createFileRoute("/open-account")({
   component: OpenAccount,
   head: () => ({
     meta: [
-      { title: "Open Account — Aurelius" },
+      { title: "Open Account — Bankislami" },
       {
         name: "description",
         content:
-          "Open your Aurelius account in minutes. Secure, guided, and built for global movement.",
+          "Open your Bankislami account in minutes. Secure, guided, and built for global movement.",
       },
     ],
   }),
