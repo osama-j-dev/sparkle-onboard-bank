@@ -197,7 +197,7 @@ function HeroCard() {
               tint="bg-brand-primary/20 text-brand-primary"
               title="Global Equity Div"
               sub="Dividend"
-              amount="+$1,420.00"
+              amount="+₨ 397,600"
               amountClass="text-brand-primary"
             />
           </div>
