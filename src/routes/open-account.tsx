@@ -570,10 +570,10 @@ function Step4({ data, errors, update }: StepProps) {
         <SelectInput
           value={data.currency} onChange={(v) => update("currency", v)} placeholder="Select currency"
           options={[
+            { value: "PKR", label: "PKR — Pakistani Rupee" },
             { value: "USD", label: "USD — US Dollar" },
             { value: "EUR", label: "EUR — Euro" },
             { value: "GBP", label: "GBP — British Pound" },
-            { value: "PKR", label: "PKR — Pakistani Rupee" },
           ]}
         />
       </Field>
