@@ -156,7 +156,7 @@ function OpenAccount() {
       <nav className="px-6 py-6 max-w-6xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="size-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary shadow-glow-primary" />
-          <span className="font-display font-extrabold text-xl tracking-tight">AURELIUS</span>
+          <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </Link>
         <Link
           to="/"
