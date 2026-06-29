@@ -19,13 +19,13 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Aurelius — Open a premium global account in 3 minutes" },
+      { title: "Bankislami — Open a premium account in 3 minutes" },
       {
         name: "description",
         content:
-          "Aurelius is next-generation banking. Open a premium global account in 3 minutes — no borders, no hidden fees, pure digital movement.",
+          "Bankislami is next-generation banking. Open a premium account in 3 minutes — no borders, no hidden fees, pure digital movement.",
       },
-      { property: "og:title", content: "Aurelius — Banking for the unbounded" },
+      { property: "og:title", content: "Bankislami — Banking for the unbounded" },
       {
         property: "og:description",
         content: "Open a premium global account in 3 minutes.",
