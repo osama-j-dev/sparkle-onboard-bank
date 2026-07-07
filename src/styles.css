@@ -112,30 +112,6 @@
       transparent 100%
     );
   }
-  .brand-card {
-    --foreground: oklch(1 0 0);
-    --color-foreground: oklch(1 0 0);
-    --border: oklch(1 0 0 / 15%);
-    --color-border: oklch(1 0 0 / 15%);
-    background: linear-gradient(
-      160deg,
-      #0050a4 0%,
-      color-mix(in oklab, #0050a4 88%, black) 100%
-    );
-    color: white;
-    border: 1px solid color-mix(in oklab, white 18%, transparent);
-    box-shadow:
-      0 30px 80px -20px color-mix(in oklab, #0050a4 55%, transparent),
-      0 0 60px color-mix(in oklab, #0050a4 40%, transparent),
-      inset 0 1px 0 color-mix(in oklab, white 20%, transparent);
-  }
-  .brand-card .text-brand-primary {
-    color: color-mix(in oklab, white 85%, #0050a4) !important;
-    text-shadow: 0 0 20px color-mix(in oklab, white 60%, transparent);
-  }
-  .brand-card h1, .brand-card h2, .brand-card h3 {
-    text-shadow: 0 0 30px color-mix(in oklab, white 40%, transparent);
-  }
   .text-gradient-brand {
     background: linear-gradient(
       90deg,
