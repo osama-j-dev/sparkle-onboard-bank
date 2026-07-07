@@ -439,7 +439,7 @@ function OpenAccount() {
                   whileTap={{ scale: submitting ? 1 : 0.97 }}
                   onClick={next}
                   disabled={submitting}
-                  className="px-7 py-3 rounded-xl bg-brand-primary text-primary-foreground font-bold text-sm cursor-pointer shadow-glow-primary inline-flex items-center gap-2 disabled:opacity-70"
+                  className="px-7 py-3 rounded-xl bg-white text-[#0050a4] font-bold text-sm cursor-pointer shadow-[0_0_30px_rgba(255,255,255,0.45)] hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] inline-flex items-center gap-2 disabled:opacity-70 transition-shadow"
                 >
                   {submitting ? (
                     <>
