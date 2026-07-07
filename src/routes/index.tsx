@@ -137,7 +137,7 @@ function Hero() {
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="px-8 py-4 rounded-2xl glass-card font-bold text-lg hover:bg-white/5 transition-colors cursor-pointer"
+              className="px-8 py-4 rounded-2xl glass-card font-bold text-lg hover:bg-foreground/5 transition-colors cursor-pointer"
             >
               View Features
             </motion.button>
@@ -168,12 +168,12 @@ function HeroCard() {
               </p>
               <h3 className="text-4xl font-display font-bold">₨ 34,944,140</h3>
             </div>
-            <div className="size-12 rounded-full border border-white/20 flex items-center justify-center">
+            <div className="size-12 rounded-full border border-foreground/20 flex items-center justify-center">
               <CreditCard className="size-5 text-brand-primary" />
             </div>
           </div>
 
-          <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-white/10">
+          <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-foreground/10">
             <img
               src={heroCard}
               alt="Bankislami glass card preview"
@@ -228,7 +228,7 @@ function Tx({
   icon: React.ReactNode; tint: string; title: string; sub: string; amount: string; amountClass: string;
 }) {
   return (
-    <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
+    <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
       <div className="flex items-center gap-3">
         <div className={`size-10 rounded-full flex items-center justify-center ${tint}`}>{icon}</div>
         <div>
@@ -244,7 +244,7 @@ function Tx({
 function TrustBar() {
   const names = ["FORTUNA", "VERTEX", "ORION", "NOVA", "ZENITH"];
   return (
-    <section className="py-12 border-y border-white/5">
+    <section className="py-12 border-y border-foreground/5">
       <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-8 opacity-50">
         {names.map((n) => (
           <span key={n} className="font-display font-black text-2xl tracking-tight">{n}</span>
@@ -271,7 +271,7 @@ const steps = [
     icon: Sparkles,
     title: "Instant Access",
     body: "Receive your virtual card immediately and start spending while your physical card ships.",
-    tint: "bg-white/10 text-foreground",
+    tint: "bg-foreground/10 text-foreground",
   },
 ];
 
@@ -299,7 +299,7 @@ function Steps() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="glass-card p-10 rounded-[2rem] hover:bg-white/[0.05] transition-all group"
+              className="glass-card p-10 rounded-[2rem] hover:bg-foreground/[0.05] transition-all group"
             >
               <div className={`size-14 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${s.tint}`}>
                 <s.icon className="size-6" />
@@ -343,7 +343,7 @@ function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card p-8 rounded-3xl hover:bg-white/[0.05] transition-all"
+              className="glass-card p-8 rounded-3xl hover:bg-foreground/[0.05] transition-all"
             >
               <div className="size-12 rounded-2xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-6">
                 <f.icon className="size-6" />
@@ -390,7 +390,7 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/5 py-12 px-6">
+    <footer className="border-t border-foreground/5 py-12 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <div className="size-6 rounded-md bg-gradient-to-br from-brand-primary to-brand-secondary" />
