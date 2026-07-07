@@ -638,16 +638,16 @@ function Step0Verify({ data, errors, update }: StepProps) {
                 onClick={() => update("accountType", t.id)}
                 className={`text-left p-4 rounded-2xl border transition-all ${
                   active
-                    ? "border-brand-primary bg-brand-primary/10 shadow-glow-primary"
-                    : "border-foreground/10 bg-foreground/[0.03] hover:bg-foreground/[0.06]"
+                    ? "border-white/60 bg-white/20 shadow-[0_0_30px_rgba(255,255,255,0.35)]"
+                    : "border-white/15 bg-white/5 hover:bg-white/10"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-display font-bold">{t.name}</span>
-                  {active && <BadgeCheck className="size-4 text-brand-primary" />}
+                  {active && <BadgeCheck className="size-4 text-white" />}
                 </div>
-                <p className="text-xs text-foreground/60">{t.desc}</p>
-                <p className="text-[11px] text-brand-primary/80 mt-2">{t.limit}</p>
+                <p className="text-xs text-white/70">{t.desc}</p>
+                <p className="text-[11px] text-white/60 mt-2">{t.limit}</p>
               </motion.button>
             );
           })}
