@@ -93,16 +93,16 @@
 
 @layer components {
   .glass-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: color-mix(in oklab, var(--brand-primary) 4%, white);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in oklab, var(--brand-primary) 12%, transparent);
   }
   .glass-pill {
-    background: rgba(255, 255, 255, 0.05);
+    background: color-mix(in oklab, white 80%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in oklab, var(--brand-primary) 15%, transparent);
   }
   .bg-aurora {
     background: radial-gradient(
