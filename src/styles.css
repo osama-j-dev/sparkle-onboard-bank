@@ -48,11 +48,11 @@
 :root {
   --radius: 1rem;
 
-  --brand-bg: oklch(0.13 0.02 260);
-  --brand-primary: oklch(0.86 0.16 200);
-  --brand-secondary: oklch(0.55 0.27 295);
-  --brand-success: oklch(0.78 0.18 155);
-  --brand-danger: oklch(0.7 0.2 25);
+  --brand-bg: oklch(1 0 0);
+  --brand-primary: oklch(0.42 0.17 258);
+  --brand-secondary: oklch(0.55 0.19 258);
+  --brand-success: oklch(0.62 0.17 155);
+  --brand-danger: oklch(0.6 0.22 25);
 
   --background: var(--brand-bg);
   --foreground: oklch(0.98 0 0);
