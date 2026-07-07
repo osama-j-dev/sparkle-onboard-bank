@@ -301,7 +301,7 @@ function OpenAccount() {
         break;
       }
       case 5: {
-        if (!data.livePhoto) errs.livePhoto = "Live selfie is required";
+        // Live selfie is optional
         if (!data.signature) errs.signature = "Signature specimen required";
         if (
           (data.employment === "self-employed" || data.accountType === "freelancer") &&
