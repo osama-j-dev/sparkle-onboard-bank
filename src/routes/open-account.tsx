@@ -399,8 +399,10 @@ function OpenAccount() {
         ) : (
           <>
             <Stepper current={step} />
-            <div className="mt-10 glass-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden">
-              <div className="absolute inset-0 bg-aurora opacity-50 -z-10" />
+            <div className="mt-10 brand-card rounded-[2rem] p-6 md:p-12 relative overflow-hidden">
+              <div className="absolute inset-0 bg-aurora opacity-30 -z-10 mix-blend-screen" />
+              <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl -z-10 animate-drift" />
+              <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5 blur-3xl -z-10 animate-float" />
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={step}
