@@ -1326,7 +1326,7 @@ function LivePhotoCapture({
   return (
     <div>
       <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60 mb-2 flex items-center gap-1.5">
-        <Camera className="size-3.5" /> Live selfie (biometric)
+        <Camera className="size-3.5" /> Live selfie (biometric) <span className="text-brand-muted font-normal">— optional</span>
       </span>
       <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-4">
         {value ? (
