@@ -424,7 +424,7 @@ function OpenAccount() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="mt-10 flex items-center justify-between pt-6 border-t border-white/5">
+              <div className="mt-10 flex items-center justify-between pt-6 border-t border-foreground/5">
                 <button
                   onClick={back}
                   disabled={step === 0 || submitting}
@@ -481,7 +481,7 @@ function Stepper({ current }: { current: number }) {
                   }}
                   transition={{ duration: 0.3 }}
                   className={`size-10 md:size-11 rounded-2xl border flex items-center justify-center backdrop-blur-xl ${
-                    active || completed ? "border-brand-primary/40" : "border-white/10"
+                    active || completed ? "border-brand-primary/40" : "border-foreground/10"
                   }`}
                 >
                   <AnimatePresence mode="wait">
@@ -512,7 +512,7 @@ function Stepper({ current }: { current: number }) {
                 </span>
               </div>
               {i < steps.length - 1 && (
-                <div className="flex-1 h-px bg-white/10 relative overflow-hidden rounded-full min-w-[16px]">
+                <div className="flex-1 h-px bg-foreground/10 relative overflow-hidden rounded-full min-w-[16px]">
                   <motion.div
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: i < current ? 1 : 0 }}
@@ -580,7 +580,7 @@ function Field({
 }
 
 const inputCls =
-  "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/60 focus:bg-white/[0.07] transition-all";
+  "w-full px-4 py-3 rounded-xl bg-foreground/5 border border-foreground/10 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/60 focus:bg-foreground/[0.07] transition-all";
 
 function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={inputCls + " " + (props.className ?? "")} />;
@@ -637,7 +637,7 @@ function Step0Verify({ data, errors, update }: StepProps) {
                 className={`text-left p-4 rounded-2xl border transition-all ${
                   active
                     ? "border-brand-primary bg-brand-primary/10 shadow-glow-primary"
-                    : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
+                    : "border-foreground/10 bg-foreground/[0.03] hover:bg-foreground/[0.06]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -760,7 +760,7 @@ function SimVerifyPanel({ data, errors, update }: StepProps) {
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+    <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">
@@ -845,7 +845,7 @@ function OtpPanel({
   };
 
   return (
-    <div className={`rounded-2xl border border-white/10 bg-white/[0.03] p-5 ${disabled ? "opacity-60" : ""}`}>
+    <div className={`rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5 ${disabled ? "opacity-60" : ""}`}>
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">{icon} {title}</p>
@@ -856,7 +856,7 @@ function OtpPanel({
             type="button"
             disabled={disabled || sending || seconds > 0}
             onClick={send}
-            className="px-4 py-2 rounded-lg bg-white/10 text-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer hover:bg-white/15"
+            className="px-4 py-2 rounded-lg bg-foreground/10 text-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer hover:bg-foreground/15"
           >
             {sending ? <><Loader2 className="size-3.5 animate-spin" /> Sending…</> : seconds > 0 ? `Resend in ${seconds}s` : sent ? "Resend code" : "Send code"}
           </button>
@@ -928,7 +928,7 @@ function CaptchaPanel({
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+    <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">
@@ -946,7 +946,7 @@ function CaptchaPanel({
       </div>
       <div className="mt-4 flex items-center gap-3 flex-wrap">
         <div
-          className="px-5 py-3 rounded-xl bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 border border-white/10 font-mono text-lg font-bold tracking-widest select-none"
+          className="px-5 py-3 rounded-xl bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 border border-foreground/10 font-mono text-lg font-bold tracking-widest select-none"
           style={{ letterSpacing: "0.35em", textShadow: "0 0 12px rgba(255,255,255,0.15)" }}
         >
           {q.display}
@@ -1088,7 +1088,7 @@ function DocumentUpload({
     <Field label={label} error={error} icon={<Upload className="size-3.5" />}>
       <div
         className={`rounded-2xl border-2 border-dashed p-4 text-center transition-colors ${
-          value ? "border-brand-primary/40 bg-brand-primary/5" : "border-white/15 bg-white/[0.02] hover:border-white/25"
+          value ? "border-brand-primary/40 bg-brand-primary/5" : "border-foreground/15 bg-foreground/[0.02] hover:border-foreground/25"
         }`}
       >
         {value ? (
@@ -1111,7 +1111,7 @@ function DocumentUpload({
               type="button"
               onClick={() => inputRef.current?.click()}
               disabled={busy}
-              className="mt-3 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs font-semibold cursor-pointer"
+              className="mt-3 px-4 py-2 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs font-semibold cursor-pointer"
             >
               {busy ? "Uploading…" : "Choose file"}
             </button>
@@ -1328,7 +1328,7 @@ function LivePhotoCapture({
       <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60 mb-2 flex items-center gap-1.5">
         <Camera className="size-3.5" /> Live selfie (biometric)
       </span>
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+      <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-4">
         {value ? (
           <div className="flex items-center gap-4 flex-wrap">
             <img src={value} alt="Live selfie" className="size-32 rounded-xl object-cover border border-brand-primary/40" />
@@ -1342,7 +1342,7 @@ function LivePhotoCapture({
               <button
                 type="button"
                 onClick={() => { onChange(""); }}
-                className="mt-3 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-xs cursor-pointer"
+                className="mt-3 px-3 py-1.5 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs cursor-pointer"
               >
                 Retake photo
               </button>
@@ -1391,7 +1391,7 @@ function LivePhotoCapture({
                   <button
                     type="button"
                     onClick={stop}
-                    className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs cursor-pointer"
+                    className="px-4 py-2 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -1453,7 +1453,7 @@ function ConsentRow({
 }) {
   return (
     <label className={`flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition-colors ${
-      checked ? "border-brand-primary/40 bg-brand-primary/5" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
+      checked ? "border-brand-primary/40 bg-brand-primary/5" : "border-foreground/10 bg-foreground/[0.03] hover:bg-foreground/[0.06]"
     }`}>
       <input
         type="checkbox"
@@ -1490,7 +1490,7 @@ function Step7Review({ data }: { data: FormData }) {
       <p className="text-sm text-foreground/60">
         Please review your details. By submitting, you authorize Bankislami to verify the information with NADRA, PMD and internal risk systems.
       </p>
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] divide-y divide-white/5">
+      <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] divide-y divide-foreground/5">
         {rows.map(([k, v]) => (
           <div key={k} className="flex items-center justify-between gap-3 px-4 py-3">
             <span className="text-xs uppercase tracking-wider text-foreground/50">{k}</span>
@@ -1555,7 +1555,7 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
           <button
             type="button"
             onClick={copy}
-            className="ml-1 size-8 rounded-lg bg-white/10 hover:bg-white/15 grid place-items-center cursor-pointer"
+            className="ml-1 size-8 rounded-lg bg-foreground/10 hover:bg-foreground/15 grid place-items-center cursor-pointer"
             aria-label="Copy tracking id"
           >
             {copied ? <Check className="size-4 text-brand-primary" /> : <Copy className="size-4" />}
@@ -1565,7 +1565,7 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
 
       <div className="max-w-lg mx-auto">
         <p className="text-xs uppercase tracking-widest text-foreground/50 mb-3">Application status</p>
-        <ol className="relative border-l border-white/10 pl-6 space-y-5">
+        <ol className="relative border-l border-foreground/10 pl-6 space-y-5">
           {stages.map((s, i) => (
             <motion.li
               key={s.key}
@@ -1580,7 +1580,7 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
                     ? "bg-brand-primary border-brand-primary"
                     : s.active
                     ? "bg-brand-primary/20 border-brand-primary animate-pulse"
-                    : "bg-background border-white/20"
+                    : "bg-background border-foreground/20"
                 }`}
               />
               <p className={`text-sm font-semibold ${s.done || s.active ? "text-foreground" : "text-foreground/40"}`}>

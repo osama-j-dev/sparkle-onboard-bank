@@ -48,30 +48,30 @@
 :root {
   --radius: 1rem;
 
-  --brand-bg: oklch(0.13 0.02 260);
-  --brand-primary: oklch(0.86 0.16 200);
-  --brand-secondary: oklch(0.55 0.27 295);
-  --brand-success: oklch(0.78 0.18 155);
-  --brand-danger: oklch(0.7 0.2 25);
+  --brand-bg: oklch(1 0 0);
+  --brand-primary: oklch(0.42 0.17 258);
+  --brand-secondary: oklch(0.55 0.19 258);
+  --brand-success: oklch(0.62 0.17 155);
+  --brand-danger: oklch(0.6 0.22 25);
 
   --background: var(--brand-bg);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.18 0.02 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.18 0.02 260);
-  --popover-foreground: oklch(0.98 0 0);
+  --foreground: oklch(0.18 0.03 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 258);
   --primary: var(--brand-primary);
-  --primary-foreground: oklch(0.13 0.02 260);
-  --secondary: oklch(0.22 0.03 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.22 0.03 260);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: var(--brand-secondary);
-  --accent-foreground: oklch(0.98 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.01 258);
+  --secondary-foreground: oklch(0.18 0.03 258);
+  --muted: oklch(0.96 0.01 258);
+  --muted-foreground: oklch(0.45 0.02 258);
+  --accent: var(--brand-primary);
+  --accent-foreground: oklch(1 0 0);
   --destructive: var(--brand-danger);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.18 0.03 258 / 12%);
+  --input: oklch(0.18 0.03 258 / 15%);
   --ring: var(--brand-primary);
 }
 
@@ -93,16 +93,16 @@
 
 @layer components {
   .glass-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: color-mix(in oklab, var(--brand-primary) 4%, white);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in oklab, var(--brand-primary) 12%, transparent);
   }
   .glass-pill {
-    background: rgba(255, 255, 255, 0.05);
+    background: color-mix(in oklab, white 80%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in oklab, var(--brand-primary) 15%, transparent);
   }
   .bg-aurora {
     background: radial-gradient(
