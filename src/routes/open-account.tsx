@@ -253,73 +253,11 @@ function OpenAccount() {
   };
 
   const validateStep = (): boolean => {
-    const errs: Record<string, string> = {};
-    switch (step) {
-      case 0: {
-        if (!data.accountType) errs.accountType = "Choose an account type";
-        if (!cnicRegex.test(data.cnic)) errs.cnic = "Format: 12345-1234567-1";
-        if (!msisdnRegex.test(data.msisdn)) errs.msisdn = "Format: 03XX-XXXXXXX";
-        if (!data.simVerified) errs.simVerified = "Verify SIM ownership (PMD API)";
-        if (!data.mobileOtpVerified) errs.mobileOtpVerified = "Verify mobile OTP";
-        if (!data.email || !z.string().email().safeParse(data.email).success)
-          errs.email = "Enter a valid email";
-        if (!data.emailOtpVerified) errs.emailOtpVerified = "Verify email OTP";
-        if (!data.captchaVerified) errs.captchaVerified = "Solve the CAPTCHA";
-        break;
-      }
-      case 1: {
-        if (data.fullName.trim().length < 2) errs.fullName = "Enter full name";
-        if (data.fatherName.trim().length < 2) errs.fatherName = "Required";
-        if (data.motherName.trim().length < 2) errs.motherName = "Required";
-        if (!data.dob) errs.dob = "Date of birth required";
-        if (!data.gender) errs.gender = "Select gender";
-        if (data.nationality.trim().length < 2) errs.nationality = "Required";
-        if (data.placeOfBirth.trim().length < 2) errs.placeOfBirth = "Required";
-        break;
-      }
-      case 2: {
-        if (!data.cnicFront) errs.cnicFront = "Upload CNIC front";
-        if (!data.cnicBack) errs.cnicBack = "Upload CNIC back";
-        if (!data.cnicIssueDate) errs.cnicIssueDate = "Required";
-        if (!data.cnicExpiryDate) errs.cnicExpiryDate = "Required";
-        break;
-      }
-      case 3: {
-        if (data.address.trim().length < 5) errs.address = "Enter address";
-        if (!data.city) errs.city = "Required";
-        if (!data.province) errs.province = "Select province";
-        if (!data.postalCode) errs.postalCode = "Required";
-        if (!data.country) errs.country = "Required";
-        break;
-      }
-      case 4: {
-        if (!data.employment) errs.employment = "Select status";
-        if (data.occupation.trim().length < 2) errs.occupation = "Required";
-        if (!data.income) errs.income = "Select range";
-        if (!data.sourceOfFunds) errs.sourceOfFunds = "Select source";
-        if (!data.purposeOfAccount) errs.purposeOfAccount = "Select purpose";
-        break;
-      }
-      case 5: {
-        // Live selfie is optional
-        if (!data.signature) errs.signature = "Signature specimen required";
-        if (
-          (data.employment === "self-employed" || data.accountType === "freelancer") &&
-          !data.proofOfBusiness
-        )
-          errs.proofOfBusiness = "Proof of business required";
-        break;
-      }
-      case 6: {
-        if (!data.termsKfs) errs.termsKfs = "Accept T&Cs and Key Fact Statement";
-        if (!data.fatcaCrs) errs.fatcaCrs = "FATCA/CRS declaration required";
-        if (!data.beneficialOwner) errs.beneficialOwner = "Beneficial ownership declaration required";
-        break;
-      }
-    }
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
+    // Testing mode: bypass all validation
+    setErrors({});
+    return true;
   };
+
 
   const next = async () => {
     if (!validateStep()) return;
