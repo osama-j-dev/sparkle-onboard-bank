@@ -75,6 +75,34 @@
   --ring: var(--brand-primary);
 }
 
+.light {
+  --brand-bg: #ffffff;
+  --brand-primary: #0050a4;
+  --brand-secondary: #0070d9;
+  --brand-success: oklch(0.5 0.16 155);
+  --brand-danger: oklch(0.55 0.2 25);
+
+  --background: #ffffff;
+  --foreground: #06223f;
+  --card: #f7fbff;
+  --card-foreground: #06223f;
+  --popover: #ffffff;
+  --popover-foreground: #06223f;
+  --primary: var(--brand-primary);
+  --primary-foreground: #ffffff;
+  --secondary: color-mix(in oklab, var(--brand-primary) 9%, white);
+  --secondary-foreground: #06223f;
+  --muted: color-mix(in oklab, var(--brand-primary) 8%, white);
+  --muted-foreground: color-mix(in oklab, var(--foreground) 62%, white);
+  --accent: var(--brand-primary);
+  --accent-foreground: #ffffff;
+  --destructive: var(--brand-danger);
+  --destructive-foreground: #ffffff;
+  --border: color-mix(in oklab, var(--brand-primary) 16%, transparent);
+  --input: color-mix(in oklab, var(--brand-primary) 18%, white);
+  --ring: var(--brand-primary);
+}
+
 
 .dark {
   --background: var(--brand-bg);
@@ -98,6 +126,15 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid color-mix(in oklab, white 10%, transparent);
+  }
+  .light .glass-card {
+    background: color-mix(in oklab, var(--brand-primary) 5%, white);
+    border-color: color-mix(in oklab, var(--brand-primary) 14%, transparent);
+    box-shadow: 0 24px 70px -30px color-mix(in oklab, var(--brand-primary) 28%, transparent);
+  }
+  .light .glass-pill {
+    background: color-mix(in oklab, white 82%, transparent);
+    border-color: color-mix(in oklab, var(--brand-primary) 16%, transparent);
   }
   .glass-pill {
     background: color-mix(in oklab, white 8%, transparent);
@@ -124,6 +161,33 @@
     background-clip: text;
     color: transparent;
   }
+}
+
+@layer utilities {
+  .light .text-white\/30 { color: color-mix(in oklab, var(--foreground) 30%, transparent); }
+  .light .text-white\/40 { color: color-mix(in oklab, var(--foreground) 40%, transparent); }
+  .light .text-white\/50 { color: color-mix(in oklab, var(--foreground) 50%, transparent); }
+  .light .text-white\/60 { color: color-mix(in oklab, var(--foreground) 60%, transparent); }
+  .light .text-white\/70 { color: color-mix(in oklab, var(--foreground) 70%, transparent); }
+  .light .text-white\/90 { color: color-mix(in oklab, var(--foreground) 90%, transparent); }
+
+  .light .bg-white\/5 { background-color: color-mix(in oklab, var(--brand-primary) 5%, transparent); }
+  .light .bg-white\/10 { background-color: color-mix(in oklab, var(--brand-primary) 10%, transparent); }
+  .light .bg-white\/15 { background-color: color-mix(in oklab, var(--brand-primary) 15%, transparent); }
+  .light .bg-white\/\[0\.03\] { background-color: color-mix(in oklab, var(--brand-primary) 3%, transparent); }
+  .light .bg-white\/\[0\.05\] { background-color: color-mix(in oklab, var(--brand-primary) 5%, transparent); }
+  .light .bg-white\/\[0\.06\] { background-color: color-mix(in oklab, var(--brand-primary) 6%, transparent); }
+  .light .bg-white\/\[0\.07\] { background-color: color-mix(in oklab, var(--brand-primary) 7%, transparent); }
+  .light .hover\:bg-white\/5:hover { background-color: color-mix(in oklab, var(--brand-primary) 5%, transparent); }
+  .light .hover\:bg-white\/15:hover { background-color: color-mix(in oklab, var(--brand-primary) 15%, transparent); }
+  .light .hover\:bg-white\/\[0\.05\]:hover { background-color: color-mix(in oklab, var(--brand-primary) 5%, transparent); }
+  .light .hover\:bg-white\/\[0\.06\]:hover { background-color: color-mix(in oklab, var(--brand-primary) 6%, transparent); }
+
+  .light .border-white\/5 { border-color: color-mix(in oklab, var(--brand-primary) 8%, transparent); }
+  .light .border-white\/10 { border-color: color-mix(in oklab, var(--brand-primary) 14%, transparent); }
+  .light .border-white\/20 { border-color: color-mix(in oklab, var(--brand-primary) 22%, transparent); }
+  .light .divide-white\/5 > :not(:last-child) { border-color: color-mix(in oklab, var(--brand-primary) 8%, transparent); }
+  .light .bg-black\/40 { background-color: color-mix(in oklab, var(--brand-primary) 8%, white); }
 }
 
 @keyframes float {

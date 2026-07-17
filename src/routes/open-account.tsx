@@ -25,6 +25,7 @@ import {
   Copy,
   X,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/open-account")({
   component: OpenAccount,
@@ -179,6 +180,8 @@ const steps = [
   { title: "Review", icon: Sparkles, desc: "Submit application" },
 ];
 
+const TESTING_BYPASS = true;
+
 // ---------- Persistence (autosave, no sensitive files) ----------
 const STORAGE_KEY = "bki-aof-draft";
 const SENSITIVE_KEYS: (keyof FormData)[] = [
@@ -305,6 +308,7 @@ function OpenAccount() {
           <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </Link>
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-white/50">
             <Lock className="size-3.5" /> Encrypted end-to-end · No local storage of documents
           </span>
@@ -556,8 +560,21 @@ type StepProps = {
 
 // ---------- Step 0: Verify ----------
 function Step0Verify({ data, errors, update }: StepProps) {
+  useEffect(() => {
+    if (!TESTING_BYPASS) return;
+    update("simVerified", true);
+    update("mobileOtpVerified", true);
+    update("emailOtpVerified", true);
+    update("captchaVerified", true);
+  }, []);
+
   return (
     <div className="space-y-8">
+      {TESTING_BYPASS && (
+        <div className="rounded-2xl border border-brand-primary/30 bg-brand-primary/10 px-4 py-3 text-xs font-semibold text-brand-primary inline-flex items-center gap-2">
+          <BadgeCheck className="size-4" /> Testing mode active — SIM, mobile OTP, email OTP and CAPTCHA are bypassed.
+        </div>
+      )}
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-3 block">
           Select account type
@@ -630,7 +647,7 @@ function Step0Verify({ data, errors, update }: StepProps) {
         verified={data.mobileOtpVerified}
         onVerified={() => update("mobileOtpVerified", true)}
         error={errors.mobileOtpVerified}
-        disabled={!msisdnRegex.test(data.msisdn) || !data.simVerified}
+        disabled={!TESTING_BYPASS && (!msisdnRegex.test(data.msisdn) || !data.simVerified)}
       />
 
       <div>
@@ -640,7 +657,7 @@ function Step0Verify({ data, errors, update }: StepProps) {
             value={data.email}
             onChange={(e) => {
               update("email", e.target.value);
-              if (data.emailOtpVerified) update("emailOtpVerified", false);
+              if (!TESTING_BYPASS && data.emailOtpVerified) update("emailOtpVerified", false);
             }}
             placeholder="you@example.com"
             maxLength={255}
@@ -656,7 +673,7 @@ function Step0Verify({ data, errors, update }: StepProps) {
         verified={data.emailOtpVerified}
         onVerified={() => update("emailOtpVerified", true)}
         error={errors.emailOtpVerified}
-        disabled={!z.string().email().safeParse(data.email).success}
+        disabled={!TESTING_BYPASS && !z.string().email().safeParse(data.email).success}
       />
 
       <CaptchaPanel
@@ -687,9 +704,18 @@ function SimVerifyPanel({ data, errors, update }: StepProps) {
   );
   const ready = cnicRegex.test(data.cnic) && msisdnRegex.test(data.msisdn);
 
+  useEffect(() => {
+    if (data.simVerified) setStatus("ok");
+  }, [data.simVerified]);
+
   const run = async () => {
     setStatus("checking");
     await new Promise((r) => setTimeout(r, 1400));
+    if (TESTING_BYPASS) {
+      setStatus("ok");
+      update("simVerified", true);
+      return;
+    }
     // Simulated pass rule: last digit of CNIC not 0
     const last = data.cnic.slice(-1);
     const ok = last !== "0";
@@ -710,7 +736,7 @@ function SimVerifyPanel({ data, errors, update }: StepProps) {
         </div>
         <button
           type="button"
-          disabled={!ready || status === "checking"}
+          disabled={(!TESTING_BYPASS && !ready) || status === "checking"}
           onClick={run}
           className="px-4 py-2 rounded-lg bg-brand-primary/90 text-primary-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer"
         >
@@ -718,6 +744,8 @@ function SimVerifyPanel({ data, errors, update }: StepProps) {
             <><Loader2 className="size-3.5 animate-spin" /> Checking…</>
           ) : status === "ok" ? (
             <><Check className="size-3.5" /> Verified</>
+          ) : TESTING_BYPASS ? (
+            "Bypass SIM"
           ) : (
             "Verify SIM"
           )}
@@ -764,6 +792,12 @@ function OtpPanel({
   const send = async () => {
     setSending(true);
     await new Promise((r) => setTimeout(r, 900));
+    if (TESTING_BYPASS) {
+      setSent(true);
+      setSending(false);
+      onVerified();
+      return;
+    }
     const c = Math.floor(100000 + Math.random() * 900000).toString();
     setExpected(c);
     setSent(true);
@@ -792,11 +826,11 @@ function OtpPanel({
         {!verified ? (
           <button
             type="button"
-            disabled={disabled || sending || seconds > 0}
+            disabled={(!TESTING_BYPASS && disabled) || sending || (!TESTING_BYPASS && seconds > 0)}
             onClick={send}
             className="px-4 py-2 rounded-lg bg-white/10 text-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer hover:bg-white/15"
           >
-            {sending ? <><Loader2 className="size-3.5 animate-spin" /> Sending…</> : seconds > 0 ? `Resend in ${seconds}s` : sent ? "Resend code" : "Send code"}
+            {sending ? <><Loader2 className="size-3.5 animate-spin" /> Bypassing…</> : TESTING_BYPASS ? "Bypass OTP" : seconds > 0 ? `Resend in ${seconds}s` : sent ? "Resend code" : "Send code"}
           </button>
         ) : (
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary">
@@ -848,6 +882,10 @@ function CaptchaPanel({
   const [ans, setAns] = useState("");
   const [wrong, setWrong] = useState(false);
 
+  useEffect(() => {
+    if (TESTING_BYPASS && !verified) onVerified(true);
+  }, [verified, onVerified]);
+
   const refresh = () => {
     setQ(genCaptcha());
     setAns("");
@@ -877,6 +915,7 @@ function CaptchaPanel({
         <button
           type="button"
           onClick={refresh}
+          disabled={TESTING_BYPASS}
           className="text-xs text-white/50 hover:text-foreground inline-flex items-center gap-1"
         >
           <RefreshCw className="size-3" /> New puzzle
@@ -899,11 +938,11 @@ function CaptchaPanel({
         {!verified ? (
           <button
             type="button"
-            onClick={check}
-            disabled={!ans}
+            onClick={TESTING_BYPASS ? () => onVerified(true) : check}
+            disabled={!TESTING_BYPASS && !ans}
             className="px-4 py-2 rounded-lg bg-brand-primary text-primary-foreground text-xs font-semibold disabled:opacity-40 cursor-pointer"
           >
-            Check
+            {TESTING_BYPASS ? "Bypass" : "Check"}
           </button>
         ) : (
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary">

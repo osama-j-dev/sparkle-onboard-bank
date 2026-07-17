@@ -13,6 +13,7 @@ import {
   Sparkles,
   Lock,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import heroCard from "@/assets/hero-card.jpg";
 
 export const Route = createFileRoute("/")({
@@ -81,9 +82,12 @@ function Nav() {
             <a key={l} href="#" className="hover:text-brand-primary transition-colors">{l}</a>
           ))}
         </div>
-        <Link to="/open-account" className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
-          Open Account
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link to="/open-account" className="bg-foreground text-background px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-primary transition-all cursor-pointer">
+            Open Account
+          </Link>
+        </div>
       </motion.div>
     </nav>
   );
