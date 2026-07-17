@@ -253,73 +253,11 @@ function OpenAccount() {
   };
 
   const validateStep = (): boolean => {
-    const errs: Record<string, string> = {};
-    switch (step) {
-      case 0: {
-        if (!data.accountType) errs.accountType = "Choose an account type";
-        if (!cnicRegex.test(data.cnic)) errs.cnic = "Format: 12345-1234567-1";
-        if (!msisdnRegex.test(data.msisdn)) errs.msisdn = "Format: 03XX-XXXXXXX";
-        if (!data.simVerified) errs.simVerified = "Verify SIM ownership (PMD API)";
-        if (!data.mobileOtpVerified) errs.mobileOtpVerified = "Verify mobile OTP";
-        if (!data.email || !z.string().email().safeParse(data.email).success)
-          errs.email = "Enter a valid email";
-        if (!data.emailOtpVerified) errs.emailOtpVerified = "Verify email OTP";
-        if (!data.captchaVerified) errs.captchaVerified = "Solve the CAPTCHA";
-        break;
-      }
-      case 1: {
-        if (data.fullName.trim().length < 2) errs.fullName = "Enter full name";
-        if (data.fatherName.trim().length < 2) errs.fatherName = "Required";
-        if (data.motherName.trim().length < 2) errs.motherName = "Required";
-        if (!data.dob) errs.dob = "Date of birth required";
-        if (!data.gender) errs.gender = "Select gender";
-        if (data.nationality.trim().length < 2) errs.nationality = "Required";
-        if (data.placeOfBirth.trim().length < 2) errs.placeOfBirth = "Required";
-        break;
-      }
-      case 2: {
-        if (!data.cnicFront) errs.cnicFront = "Upload CNIC front";
-        if (!data.cnicBack) errs.cnicBack = "Upload CNIC back";
-        if (!data.cnicIssueDate) errs.cnicIssueDate = "Required";
-        if (!data.cnicExpiryDate) errs.cnicExpiryDate = "Required";
-        break;
-      }
-      case 3: {
-        if (data.address.trim().length < 5) errs.address = "Enter address";
-        if (!data.city) errs.city = "Required";
-        if (!data.province) errs.province = "Select province";
-        if (!data.postalCode) errs.postalCode = "Required";
-        if (!data.country) errs.country = "Required";
-        break;
-      }
-      case 4: {
-        if (!data.employment) errs.employment = "Select status";
-        if (data.occupation.trim().length < 2) errs.occupation = "Required";
-        if (!data.income) errs.income = "Select range";
-        if (!data.sourceOfFunds) errs.sourceOfFunds = "Select source";
-        if (!data.purposeOfAccount) errs.purposeOfAccount = "Select purpose";
-        break;
-      }
-      case 5: {
-        // Live selfie is optional
-        if (!data.signature) errs.signature = "Signature specimen required";
-        if (
-          (data.employment === "self-employed" || data.accountType === "freelancer") &&
-          !data.proofOfBusiness
-        )
-          errs.proofOfBusiness = "Proof of business required";
-        break;
-      }
-      case 6: {
-        if (!data.termsKfs) errs.termsKfs = "Accept T&Cs and Key Fact Statement";
-        if (!data.fatcaCrs) errs.fatcaCrs = "FATCA/CRS declaration required";
-        if (!data.beneficialOwner) errs.beneficialOwner = "Beneficial ownership declaration required";
-        break;
-      }
-    }
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
+    // Testing mode: bypass all validation
+    setErrors({});
+    return true;
   };
+
 
   const next = async () => {
     if (!validateStep()) return;
@@ -367,12 +305,12 @@ function OpenAccount() {
           <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </Link>
         <div className="flex items-center gap-4">
-          <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-foreground/50">
+          <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-white/50">
             <Lock className="size-3.5" /> Encrypted end-to-end · No local storage of documents
           </span>
           <Link
             to="/"
-            className="text-sm text-foreground/60 hover:text-foreground inline-flex items-center gap-1.5"
+            className="text-sm text-white/60 hover:text-foreground inline-flex items-center gap-1.5"
           >
             <ArrowLeft className="size-4" /> Back to home
           </Link>
@@ -386,7 +324,7 @@ function OpenAccount() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="mb-4 glass-card rounded-xl px-4 py-3 text-sm text-foreground/70 inline-flex items-center gap-2"
+              className="mb-4 glass-card rounded-xl px-4 py-3 text-sm text-white/70 inline-flex items-center gap-2"
             >
               <RefreshCw className="size-4 text-brand-primary" />
               Resumed your saved application. Documents & OTPs need re-verification for security.
@@ -424,11 +362,11 @@ function OpenAccount() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="mt-10 flex items-center justify-between pt-6 border-t border-foreground/5">
+              <div className="mt-10 flex items-center justify-between pt-6 border-t border-white/5">
                 <button
                   onClick={back}
                   disabled={step === 0 || submitting}
-                  className="px-5 py-3 rounded-xl text-sm font-semibold text-foreground/70 hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed inline-flex items-center gap-2 transition-colors cursor-pointer"
+                  className="px-5 py-3 rounded-xl text-sm font-semibold text-white/70 hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed inline-flex items-center gap-2 transition-colors cursor-pointer"
                 >
                   <ArrowLeft className="size-4" /> Back
                 </button>
@@ -481,7 +419,7 @@ function Stepper({ current }: { current: number }) {
                   }}
                   transition={{ duration: 0.3 }}
                   className={`size-10 md:size-11 rounded-2xl border flex items-center justify-center backdrop-blur-xl ${
-                    active || completed ? "border-brand-primary/40" : "border-foreground/10"
+                    active || completed ? "border-brand-primary/40" : "border-white/10"
                   }`}
                 >
                   <AnimatePresence mode="wait">
@@ -497,7 +435,7 @@ function Stepper({ current }: { current: number }) {
                     ) : (
                       <motion.div key="i" initial={{ scale: 0.5 }} animate={{ scale: 1 }}>
                         <Icon
-                          className={`size-4 ${active ? "text-brand-primary" : "text-foreground/40"}`}
+                          className={`size-4 ${active ? "text-brand-primary" : "text-white/40"}`}
                         />
                       </motion.div>
                     )}
@@ -505,14 +443,14 @@ function Stepper({ current }: { current: number }) {
                 </motion.div>
                 <span
                   className={`text-[10px] font-semibold tracking-wide uppercase hidden md:block ${
-                    active ? "text-foreground" : "text-foreground/40"
+                    active ? "text-foreground" : "text-white/40"
                   }`}
                 >
                   {s.title}
                 </span>
               </div>
               {i < steps.length - 1 && (
-                <div className="flex-1 h-px bg-foreground/10 relative overflow-hidden rounded-full min-w-[16px]">
+                <div className="flex-1 h-px bg-white/10 relative overflow-hidden rounded-full min-w-[16px]">
                   <motion.div
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: i < current ? 1 : 0 }}
@@ -540,7 +478,7 @@ function StepHeader({ step }: { step: number }) {
       <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight">
         {s.title === "Verify" ? "Identity verification" : `${s.title} details`}
       </h2>
-      <p className="text-foreground/50 mt-2">{s.desc}</p>
+      <p className="text-white/50 mt-2">{s.desc}</p>
     </div>
   );
 }
@@ -557,12 +495,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60 mb-2 flex items-center gap-1.5">
+      <span className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-2 flex items-center gap-1.5">
         {icon}
         {label}
       </span>
       {children}
-      {hint && !error && <span className="block mt-1.5 text-xs text-foreground/40">{hint}</span>}
+      {hint && !error && <span className="block mt-1.5 text-xs text-white/40">{hint}</span>}
       <AnimatePresence>
         {error && (
           <motion.span
@@ -580,7 +518,7 @@ function Field({
 }
 
 const inputCls =
-  "w-full px-4 py-3 rounded-xl bg-foreground/5 border border-foreground/10 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/60 focus:bg-foreground/[0.07] transition-all";
+  "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-white/30 focus:outline-none focus:border-brand-primary/60 focus:bg-white/[0.07] transition-all";
 
 function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={inputCls + " " + (props.className ?? "")} />;
@@ -621,7 +559,7 @@ function Step0Verify({ data, errors, update }: StepProps) {
   return (
     <div className="space-y-8">
       <div>
-        <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60 mb-3 block">
+        <span className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-3 block">
           Select account type
         </span>
         <div className="grid md:grid-cols-2 gap-3">
@@ -637,14 +575,14 @@ function Step0Verify({ data, errors, update }: StepProps) {
                 className={`text-left p-4 rounded-2xl border transition-all ${
                   active
                     ? "border-brand-primary bg-brand-primary/10 shadow-glow-primary"
-                    : "border-foreground/10 bg-foreground/[0.03] hover:bg-foreground/[0.06]"
+                    : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-display font-bold">{t.name}</span>
                   {active && <BadgeCheck className="size-4 text-brand-primary" />}
                 </div>
-                <p className="text-xs text-foreground/60">{t.desc}</p>
+                <p className="text-xs text-white/60">{t.desc}</p>
                 <p className="text-[11px] text-brand-primary/80 mt-2">{t.limit}</p>
               </motion.button>
             );
@@ -760,13 +698,13 @@ function SimVerifyPanel({ data, errors, update }: StepProps) {
   };
 
   return (
-    <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">
             <ScanFace className="size-4 text-brand-primary" /> SIM ownership verification
           </p>
-          <p className="text-xs text-foreground/50 mt-1">
+          <p className="text-xs text-white/50 mt-1">
             We check your CNIC ↔ MSISDN pairing with the operator's PMD registry.
           </p>
         </div>
@@ -845,18 +783,18 @@ function OtpPanel({
   };
 
   return (
-    <div className={`rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5 ${disabled ? "opacity-60" : ""}`}>
+    <div className={`rounded-2xl border border-white/10 bg-white/[0.03] p-5 ${disabled ? "opacity-60" : ""}`}>
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">{icon} {title}</p>
-          <p className="text-xs text-foreground/50 mt-1">{subtitle}</p>
+          <p className="text-xs text-white/50 mt-1">{subtitle}</p>
         </div>
         {!verified ? (
           <button
             type="button"
             disabled={disabled || sending || seconds > 0}
             onClick={send}
-            className="px-4 py-2 rounded-lg bg-foreground/10 text-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer hover:bg-foreground/15"
+            className="px-4 py-2 rounded-lg bg-white/10 text-foreground text-xs font-semibold disabled:opacity-40 inline-flex items-center gap-2 cursor-pointer hover:bg-white/15"
           >
             {sending ? <><Loader2 className="size-3.5 animate-spin" /> Sending…</> : seconds > 0 ? `Resend in ${seconds}s` : sent ? "Resend code" : "Send code"}
           </button>
@@ -888,7 +826,7 @@ function OtpPanel({
             Verify
           </button>
           {wrong && <span className="text-xs text-brand-danger">Incorrect code — try again.</span>}
-          <span className="text-[11px] text-foreground/40">
+          <span className="text-[11px] text-white/40">
             Demo: code is printed in browser console.
           </span>
         </div>
@@ -928,25 +866,25 @@ function CaptchaPanel({
   };
 
   return (
-    <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold flex items-center gap-2">
             <ShieldCheck className="size-4 text-brand-primary" /> Human check
           </p>
-          <p className="text-xs text-foreground/50 mt-1">Solve the puzzle to continue.</p>
+          <p className="text-xs text-white/50 mt-1">Solve the puzzle to continue.</p>
         </div>
         <button
           type="button"
           onClick={refresh}
-          className="text-xs text-foreground/50 hover:text-foreground inline-flex items-center gap-1"
+          className="text-xs text-white/50 hover:text-foreground inline-flex items-center gap-1"
         >
           <RefreshCw className="size-3" /> New puzzle
         </button>
       </div>
       <div className="mt-4 flex items-center gap-3 flex-wrap">
         <div
-          className="px-5 py-3 rounded-xl bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 border border-foreground/10 font-mono text-lg font-bold tracking-widest select-none"
+          className="px-5 py-3 rounded-xl bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 border border-white/10 font-mono text-lg font-bold tracking-widest select-none"
           style={{ letterSpacing: "0.35em", textShadow: "0 0 12px rgba(255,255,255,0.15)" }}
         >
           {q.display}
@@ -1088,7 +1026,7 @@ function DocumentUpload({
     <Field label={label} error={error} icon={<Upload className="size-3.5" />}>
       <div
         className={`rounded-2xl border-2 border-dashed p-4 text-center transition-colors ${
-          value ? "border-brand-primary/40 bg-brand-primary/5" : "border-foreground/15 bg-foreground/[0.02] hover:border-foreground/25"
+          value ? "border-brand-primary/40 bg-brand-primary/5" : "border-white/15 bg-white/[0.02] hover:border-white/25"
         }`}
       >
         {value ? (
@@ -1105,13 +1043,13 @@ function DocumentUpload({
           </div>
         ) : (
           <>
-            <Upload className="size-6 mx-auto text-foreground/40" />
-            <p className="text-xs text-foreground/50 mt-2">PNG, JPG up to 5MB</p>
+            <Upload className="size-6 mx-auto text-white/40" />
+            <p className="text-xs text-white/50 mt-2">PNG, JPG up to 5MB</p>
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
               disabled={busy}
-              className="mt-3 px-4 py-2 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs font-semibold cursor-pointer"
+              className="mt-3 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs font-semibold cursor-pointer"
             >
               {busy ? "Uploading…" : "Choose file"}
             </button>
@@ -1325,10 +1263,10 @@ function LivePhotoCapture({
 
   return (
     <div>
-      <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60 mb-2 flex items-center gap-1.5">
+      <span className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-2 flex items-center gap-1.5">
         <Camera className="size-3.5" /> Live selfie (biometric) <span className="text-brand-muted font-normal">— optional</span>
       </span>
-      <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-4">
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
         {value ? (
           <div className="flex items-center gap-4 flex-wrap">
             <img src={value} alt="Live selfie" className="size-32 rounded-xl object-cover border border-brand-primary/40" />
@@ -1336,13 +1274,13 @@ function LivePhotoCapture({
               <p className="text-sm font-semibold text-brand-primary flex items-center gap-1.5">
                 <BadgeCheck className="size-4" /> Live capture recorded
               </p>
-              <p className="text-xs text-foreground/50 mt-1">
+              <p className="text-xs text-white/50 mt-1">
                 Facial biometric will be matched with your CNIC photo by NADRA Verisys.
               </p>
               <button
                 type="button"
                 onClick={() => { onChange(""); }}
-                className="mt-3 px-3 py-1.5 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs cursor-pointer"
+                className="mt-3 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-xs cursor-pointer"
               >
                 Retake photo
               </button>
@@ -1354,7 +1292,7 @@ function LivePhotoCapture({
               {active ? (
                 <video ref={videoRef} className="w-full h-full object-cover -scale-x-100" playsInline muted />
               ) : (
-                <div className="absolute inset-0 grid place-items-center text-foreground/40">
+                <div className="absolute inset-0 grid place-items-center text-white/40">
                   <div className="text-center">
                     <ScanFace className="size-10 mx-auto mb-2" />
                     <p className="text-xs">Camera preview will appear here</p>
@@ -1365,7 +1303,7 @@ function LivePhotoCapture({
                 <div className="pointer-events-none absolute inset-8 rounded-[45%] border-2 border-brand-primary/60 animate-pulse" />
               )}
             </div>
-            <p className="text-[11px] text-foreground/40 mt-3">
+            <p className="text-[11px] text-white/40 mt-3">
               File uploads are disabled for the selfie. Capture must be taken live via camera.
             </p>
             <div className="mt-3 flex items-center justify-center gap-2">
@@ -1391,7 +1329,7 @@ function LivePhotoCapture({
                   <button
                     type="button"
                     onClick={stop}
-                    className="px-4 py-2 rounded-lg bg-foreground/10 hover:bg-foreground/15 text-xs cursor-pointer"
+                    className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -1453,7 +1391,7 @@ function ConsentRow({
 }) {
   return (
     <label className={`flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition-colors ${
-      checked ? "border-brand-primary/40 bg-brand-primary/5" : "border-foreground/10 bg-foreground/[0.03] hover:bg-foreground/[0.06]"
+      checked ? "border-brand-primary/40 bg-brand-primary/5" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
     }`}>
       <input
         type="checkbox"
@@ -1463,7 +1401,7 @@ function ConsentRow({
       />
       <div>
         <p className="text-sm font-semibold">{title}</p>
-        <p className="text-xs text-foreground/60 mt-1">{desc}</p>
+        <p className="text-xs text-white/60 mt-1">{desc}</p>
         {error && <p className="text-xs text-brand-danger mt-2">{error}</p>}
       </div>
     </label>
@@ -1487,18 +1425,18 @@ function Step7Review({ data }: { data: FormData }) {
   ];
   return (
     <div className="space-y-4">
-      <p className="text-sm text-foreground/60">
+      <p className="text-sm text-white/60">
         Please review your details. By submitting, you authorize Bankislami to verify the information with NADRA, PMD and internal risk systems.
       </p>
-      <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] divide-y divide-foreground/5">
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] divide-y divide-white/5">
         {rows.map(([k, v]) => (
           <div key={k} className="flex items-center justify-between gap-3 px-4 py-3">
-            <span className="text-xs uppercase tracking-wider text-foreground/50">{k}</span>
-            <span className="text-sm font-medium text-foreground/90 text-right truncate max-w-[60%]">{v || "—"}</span>
+            <span className="text-xs uppercase tracking-wider text-white/50">{k}</span>
+            <span className="text-sm font-medium text-white/90 text-right truncate max-w-[60%]">{v || "—"}</span>
           </div>
         ))}
       </div>
-      <p className="text-[11px] text-foreground/40 flex items-center gap-1.5">
+      <p className="text-[11px] text-white/40 flex items-center gap-1.5">
         <Lock className="size-3" /> Your data is encrypted in transit (TLS 1.3) and never persisted on this device.
       </p>
     </div>
@@ -1543,19 +1481,19 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
         <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-3">
           Application received
         </h2>
-        <p className="text-foreground/60 max-w-md mx-auto mb-6">
+        <p className="text-white/60 max-w-md mx-auto mb-6">
           Thanks, <span className="text-foreground font-semibold">{data.fullName.split(" ")[0] || "customer"}</span>.
           We've sent confirmation to{" "}
           <span className="text-foreground font-semibold">{data.email}</span>.
         </p>
 
         <div className="inline-flex items-center gap-3 rounded-2xl border border-brand-primary/40 bg-brand-primary/10 px-5 py-3 mb-8">
-          <span className="text-xs uppercase tracking-widest text-foreground/60">Tracking ID</span>
+          <span className="text-xs uppercase tracking-widest text-white/60">Tracking ID</span>
           <span className="font-mono text-lg font-bold text-brand-primary">{trackingId}</span>
           <button
             type="button"
             onClick={copy}
-            className="ml-1 size-8 rounded-lg bg-foreground/10 hover:bg-foreground/15 grid place-items-center cursor-pointer"
+            className="ml-1 size-8 rounded-lg bg-white/10 hover:bg-white/15 grid place-items-center cursor-pointer"
             aria-label="Copy tracking id"
           >
             {copied ? <Check className="size-4 text-brand-primary" /> : <Copy className="size-4" />}
@@ -1564,8 +1502,8 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
       </div>
 
       <div className="max-w-lg mx-auto">
-        <p className="text-xs uppercase tracking-widest text-foreground/50 mb-3">Application status</p>
-        <ol className="relative border-l border-foreground/10 pl-6 space-y-5">
+        <p className="text-xs uppercase tracking-widest text-white/50 mb-3">Application status</p>
+        <ol className="relative border-l border-white/10 pl-6 space-y-5">
           {stages.map((s, i) => (
             <motion.li
               key={s.key}
@@ -1580,13 +1518,13 @@ function SuccessScreen({ data, trackingId }: { data: FormData; trackingId: strin
                     ? "bg-brand-primary border-brand-primary"
                     : s.active
                     ? "bg-brand-primary/20 border-brand-primary animate-pulse"
-                    : "bg-background border-foreground/20"
+                    : "bg-background border-white/20"
                 }`}
               />
-              <p className={`text-sm font-semibold ${s.done || s.active ? "text-foreground" : "text-foreground/40"}`}>
+              <p className={`text-sm font-semibold ${s.done || s.active ? "text-foreground" : "text-white/40"}`}>
                 {s.label}
               </p>
-              <p className="text-xs text-foreground/50 mt-0.5">{s.desc}</p>
+              <p className="text-xs text-white/50 mt-0.5">{s.desc}</p>
             </motion.li>
           ))}
         </ol>

@@ -76,7 +76,7 @@ function Nav() {
           <div className="size-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary shadow-glow-primary" />
           <span className="font-display font-extrabold text-xl tracking-tight">BANKISLAMI</span>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
           {["Personal", "Business", "Treasury", "Wealth"].map((l) => (
             <a key={l} href="#" className="hover:text-brand-primary transition-colors">{l}</a>
           ))}
@@ -116,7 +116,7 @@ function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-xl text-foreground/60 max-w-lg mb-10 leading-relaxed"
+            className="text-xl text-white/60 max-w-lg mb-10 leading-relaxed"
           >
             Open a premium global account in 3 minutes. No borders, no hidden
             fees, just pure digital movement.
@@ -137,7 +137,7 @@ function Hero() {
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="px-8 py-4 rounded-2xl glass-card font-bold text-lg hover:bg-foreground/5 transition-colors cursor-pointer"
+              className="px-8 py-4 rounded-2xl glass-card font-bold text-lg hover:bg-white/5 transition-colors cursor-pointer"
             >
               View Features
             </motion.button>
@@ -163,17 +163,17 @@ function HeroCard() {
         <div className="glass-card p-8 rounded-[2.5rem] shadow-glass relative z-10">
           <div className="flex justify-between items-start mb-8">
             <div>
-              <p className="text-foreground/40 text-xs uppercase tracking-widest mb-1">
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-1">
                 Available Balance
               </p>
               <h3 className="text-4xl font-display font-bold">₨ 34,944,140</h3>
             </div>
-            <div className="size-12 rounded-full border border-foreground/20 flex items-center justify-center">
+            <div className="size-12 rounded-full border border-white/20 flex items-center justify-center">
               <CreditCard className="size-5 text-brand-primary" />
             </div>
           </div>
 
-          <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-foreground/10">
+          <div className="w-full aspect-[1.6/1] rounded-2xl mb-8 overflow-hidden border border-white/10">
             <img
               src={heroCard}
               alt="Bankislami glass card preview"
@@ -209,7 +209,7 @@ function HeroCard() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="absolute -bottom-6 -left-6 lg:-left-12 glass-card p-5 rounded-3xl z-20 shadow-glass max-w-[210px]"
         >
-          <p className="text-[10px] uppercase text-foreground/40 font-bold mb-2 tracking-widest">
+          <p className="text-[10px] uppercase text-white/40 font-bold mb-2 tracking-widest">
             Security Status
           </p>
           <div className="flex items-center gap-3">
@@ -228,12 +228,12 @@ function Tx({
   icon: React.ReactNode; tint: string; title: string; sub: string; amount: string; amountClass: string;
 }) {
   return (
-    <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+    <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
       <div className="flex items-center gap-3">
         <div className={`size-10 rounded-full flex items-center justify-center ${tint}`}>{icon}</div>
         <div>
           <p className="text-sm font-medium">{title}</p>
-          <p className="text-xs text-foreground/40">{sub}</p>
+          <p className="text-xs text-white/40">{sub}</p>
         </div>
       </div>
       <span className={`font-medium ${amountClass}`}>{amount}</span>
@@ -244,7 +244,7 @@ function Tx({
 function TrustBar() {
   const names = ["FORTUNA", "VERTEX", "ORION", "NOVA", "ZENITH"];
   return (
-    <section className="py-12 border-y border-foreground/5">
+    <section className="py-12 border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-8 opacity-50">
         {names.map((n) => (
           <span key={n} className="font-display font-black text-2xl tracking-tight">{n}</span>
@@ -271,7 +271,7 @@ const steps = [
     icon: Sparkles,
     title: "Instant Access",
     body: "Receive your virtual card immediately and start spending while your physical card ships.",
-    tint: "bg-foreground/10 text-foreground",
+    tint: "bg-white/10 text-foreground",
   },
 ];
 
@@ -289,7 +289,7 @@ function Steps() {
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 tracking-tight">
             Start your journey in seconds
           </h2>
-          <p className="text-foreground/50">The future of banking is frictionless.</p>
+          <p className="text-white/50">The future of banking is frictionless.</p>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((s, i) => (
@@ -299,14 +299,14 @@ function Steps() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="glass-card p-10 rounded-[2rem] hover:bg-foreground/[0.05] transition-all group"
+              className="glass-card p-10 rounded-[2rem] hover:bg-white/[0.05] transition-all group"
             >
               <div className={`size-14 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${s.tint}`}>
                 <s.icon className="size-6" />
               </div>
-              <div className="text-xs font-mono text-foreground/30 mb-2">0{i + 1}</div>
+              <div className="text-xs font-mono text-white/30 mb-2">0{i + 1}</div>
               <h3 className="text-xl font-bold mb-4">{s.title}</h3>
-              <p className="text-foreground/50 leading-relaxed">{s.body}</p>
+              <p className="text-white/50 leading-relaxed">{s.body}</p>
             </motion.div>
           ))}
         </div>
@@ -343,13 +343,13 @@ function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card p-8 rounded-3xl hover:bg-foreground/[0.05] transition-all"
+              className="glass-card p-8 rounded-3xl hover:bg-white/[0.05] transition-all"
             >
               <div className="size-12 rounded-2xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-6">
                 <f.icon className="size-6" />
               </div>
               <h4 className="font-bold mb-2">{f.title}</h4>
-              <p className="text-sm text-foreground/50 leading-relaxed">{f.body}</p>
+              <p className="text-sm text-white/50 leading-relaxed">{f.body}</p>
             </motion.div>
           ))}
         </div>
@@ -372,7 +372,7 @@ function FinalCTA() {
         <h2 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
           Your account is <span className="text-gradient-brand">3 minutes away.</span>
         </h2>
-        <p className="text-lg text-foreground/60 max-w-xl mx-auto mb-10">
+        <p className="text-lg text-white/60 max-w-xl mx-auto mb-10">
           Join 240,000+ members banking on the new rail.
         </p>
         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
@@ -390,16 +390,16 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-foreground/5 py-12 px-6">
+    <footer className="border-t border-white/5 py-12 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <div className="size-6 rounded-md bg-gradient-to-br from-brand-primary to-brand-secondary" />
           <span className="font-display font-extrabold tracking-tight">BANKISLAMI</span>
         </div>
-        <p className="text-xs text-foreground/40">
+        <p className="text-xs text-white/40">
           © 2026 Bankislami Financial. Banking services via Bankislami Trust Partners.
         </p>
-        <div className="flex gap-6 text-xs text-foreground/50">
+        <div className="flex gap-6 text-xs text-white/50">
           <a href="#" className="hover:text-brand-primary">Privacy</a>
           <a href="#" className="hover:text-brand-primary">Terms</a>
           <a href="#" className="hover:text-brand-primary">Security</a>
