@@ -226,7 +226,17 @@ function clearDraft() {
 function OpenAccount() {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [data, setData] = useState<FormData>(initial);
+  const [data, setData] = useState<FormData>(() =>
+    TESTING_BYPASS
+      ? {
+          ...initial,
+          simVerified: true,
+          mobileOtpVerified: true,
+          emailOtpVerified: true,
+          captchaVerified: true,
+        }
+      : initial,
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [trackingId, setTrackingId] = useState<string | null>(null);
@@ -237,7 +247,18 @@ function OpenAccount() {
     const draft = loadDraft();
     if (draft) {
       const { __step, ...rest } = draft as Partial<FormData> & { __step?: number };
-      setData((d) => ({ ...d, ...rest }));
+      setData((d) => ({
+        ...d,
+        ...rest,
+        ...(TESTING_BYPASS
+          ? {
+              simVerified: true,
+              mobileOtpVerified: true,
+              emailOtpVerified: true,
+              captchaVerified: true,
+            }
+          : {}),
+      }));
       if (typeof __step === "number") setStep(Math.min(__step, steps.length - 1));
       setResumedNotice(true);
       const t = setTimeout(() => setResumedNotice(false), 4000);
